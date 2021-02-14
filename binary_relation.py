@@ -171,6 +171,11 @@ class BinaryRelation:
 #         self.printRelation(inversed)
         return inversed
 
+    def complementRelation(self):
+        complement = np.ones((self.n_rows, self.n_cols))
+        complement = np.subtract(complement, self.relation)
+        return complement
+
     def getMaximum(self):
         """
         Elements with all ones in a row of a binary relation
@@ -247,15 +252,18 @@ if __name__ == '__main__':
     relation.getMinimal()
     print()
     
-    print("Relation R^2:")
-    r2 = relation.composition(relation.relation)
-    relation.printRelation(r2)
+#     print("Relation R^2:")
+#     r2 = relation.composition(relation.relation)
+#     relation.printRelation(r2)
     
     print("Relation R^-1:")
     r_inv = relation.inverseRelation()
     relation.printRelation(r_inv)
     
-    print("Relation R^s:")
-    r_strict = relation.strictRelation()
-    relation.printRelation(r_strict)
+#     print("Relation R^s:")
+#     r_strict = relation.strictRelation()
+#     relation.printRelation(r_strict)
     
+    print("Relation ¬R:")
+    r_comp = relation.complementRelation()
+    relation.printRelation(r_comp)
